@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background: #1f242d;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 9%;
+    background: #1f242d;
+}
+
+.logo img{
+    height: 70px;
+}
+
+.help button{
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 75vh;
+}
+
+.note{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 96%;
+    font-size: 0.9rem;
+    color: yellow;
+    text-align: center;
+
+    &.hide-note{
+        display: none;
+    }
+}
+.home-img .img-box{
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0.1;
+    scale: 70%;
+    transition: all 0.7s;
+}
+
+.show-assistant{
+    opacity: 1;
+    animation: activate 0.7s ease-out forwards;
+}
+
+.hide-assistant{
+    opacity: 0.1;
+    animation: deactivate 0.7s ease-in backwards;
+}
+
+@keyframes activate{
+    0%{
+        opacity: 0.1;
+        scale: 70%;
+    }
+    100%{
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+@keyframes deactivate{
+    0%{
+        opacity: 1;
+        scale: 100%;
+    }
+    100%{
+        opacity: 0.1;
+        scale: 70%;
+    }
+}
+
+.home-img .img-box::before,
+.home-img .img-box::after{
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: conic-gradient(transparent, transparent, transparent, rgb(158, 9, 9));
+    transform: rotate(0deg);
+    animation: rotate-border 10s linear infinite;
+}
+
+@keyframes rotate-border{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.home-img .img-box::after{
+    animation-delay: -5s;
+}
+
+.home-img .img-box .img-item{
+    width: 100%;
+    position: relative;
+    height: 100%;
+    background: #1f242d;
+    border-radius: 50%;
+    border: #1f242d .1px solid;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.home-img .img-box .img-item img{
+    position: absolute;
+    display: block;
+    width: 82%;
+    top: 30px;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+    scale: 117%;
+}
+
+.buttons{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.activate{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border: 1px solid rgb(22, 161, 22);
+    padding: 35px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 3rem;
+    font-weight: 600;
+    background: rgb(22, 161, 22);
+    box-shadow: rgb(255, 255, 255) 0 0 5px;
+    color: white;
+
+    
+}
+
+.inner{
+    height: 50px;
+    width: 50px;
+    padding: 25px;
+    border-radius: 50%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset rgb(255, 255, 255) 0 0 10px;
+}
+
+.deactivate{
+    border: 1px solid rgb(158, 9, 9);
+    background: rgb(255, 0, 0);
+    box-shadow: rgb(255, 255, 255) 0 0 5px;
+
+    .inner{
+        box-shadow: inset white 0 0 10px;
+    }
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    padding: 30px 15px;
+    background: white;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 15px;
+    position: fixed;
+    top: 130px;
+    right: -365px;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.show-menu{
+    right: 9%;
+    animation: slide-menu .5s ease-in-out forwards;
+}
+
+@keyframes slide-menu{
+    0%{
+        opacity: 0;
+        visibility: hidden;
+        right: -365px;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+        right: 9%;
+    }
+}
+
+.sub-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 15px;
+    border: #bfbfbf 0.5px solid;
+    padding: 10px;
+    box-shadow: inset #4545 2px 2px 10px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.menu-item{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    padding-left: 30px;
+
+}
+@media(max-width: 768px){
+    nav{
+        padding: 15px 5%;
+    }
+
+    .logo img{
+        height: 45px;
+    }
+    .help button{
+        font-size: 2rem;
+    }
+    .container{
+        height: 90vh;
+    }
+    .img-box{
+        width: 350px !important;
+        height: 350px !important;
+    }
+    /* .home-img .img-box::before,
+    .home-img .img-box::after{
+        width: 300px;
+        height: 300px;
+    } */
+
+    .home-img .img-box .img-item img{
+        scale: 115%;
+        width: 80.5% !important;
+    }
+
+    .show-menu{
+        right: 3.5%;
+        animation: slide-menu .5s ease-in-out forwards;
+    }
+    
+    @keyframes slide-menu{
+        0%{
+            opacity: 0;
+            visibility: hidden;
+            right: -365px;
+        }
+        100%{
+            opacity: 1;
+            visibility: visible;
+            right: 3.5%;
+        }
+    }
+}
+
+@media(max-width: 380px){
+    .show-menu{
+        right: 1%;
+        animation: slide-menu .5s ease-in-out forwards;
+        scale: 80%;
+    }
+    
+    @keyframes slide-menu{
+        0%{
+            opacity: 0;
+            visibility: hidden;
+            right: -365px;
+        }
+        100%{
+            opacity: 1;
+            visibility: visible;
+            right: 1%;
+        }
+    }
+}
